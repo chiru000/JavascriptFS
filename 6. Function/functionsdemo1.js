@@ -75,11 +75,14 @@ console.log(area(123.123));
 
 // Function for evennumber
 function evenornot(evennum) {
-    if (evennum % 2 == 0) {
+    return evennum % 2 == 0;
+    /*(evennum % 2 == 0 ? evennum + ' is evenumber' : evennum + ' is not evenumber');
+        if (evennum % 2 == 0) {
         return evennum + ' is evenumber';
     } else {
         return evennum + ' is not evenumber';
     }
+    */
 }
 console.log(evenornot(1));
 console.log(evenornot(2));
@@ -89,10 +92,8 @@ console.log(evenornot(5));
 // Function for prime or not 
 function primeornot(num) {
     let isPrime = true;
-    if (num == 1) {
+    if (num == 1)
         isPrime = false;
-
-    }
     else {
         for (var i = 2; i < num; i++) {
             if (num % i == 0) {
@@ -101,10 +102,13 @@ function primeornot(num) {
             }
         }
     }
+    return isPrime;
+    /*
     if (isPrime)
         return num + ' is prime number';
     else
         return num + ' is not prime number';
+    */
 }
 console.log(primeornot(1));
 console.log(primeornot(2));
