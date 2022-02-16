@@ -6,7 +6,7 @@ console.log(add(1, 2, 3));
 
 //2. To find Speed (dist-in KM and Time-in mins)
 function speed(dist, time) {
-    return dist / (time / 60) + ' KM/h';
+    return dist / (time / 60);
 }
 console.log(speed(200, 120));
 
@@ -27,27 +27,35 @@ function factorial(number) {
 console.log(factorial(3));
 
 //5. even or not with true false output
-function even(n3) {
-    return (n3 % 2 == 0 ? true : false);
+function even(n) {
+    return n % 2 == 0;
 }
 console.log(even(100));
 
 //6. odd or not with true false output
-function odd(n4) {
-    return (n4 % 2 != 0 ? true : false);
+function odd(n) {
+    return (n % 2 != 0 ? true : false);
 }
 console.log(odd(15));
 
 //7. Prime or Not 
 function isPrime(num) {
-    let p1 = true;
+    // let p1 = true;
+    // if (num == 1)
+    //     p1 = false;
+    // else
+    //     for (var i = 2; i < num; i++)
+    //         if (num % i == 0)
+    //             p1 = false;
+    // return p1;
+
     if (num == 1)
-        p1 = false;
-    else
-        for (var i = 2; i < num; i++)
-            if (num % i == 0)
-                p1 = false;
-    return p1;
+        return false;
+    for (var i = 2; i < parseInt(num / 2); i++)
+        if (num % i == 0)
+            return false;
+    return true;
+
 }
 console.log(isPrime(4));
 
@@ -60,10 +68,11 @@ function isPalindrome(num) {
         rev = (rev * 10) + lastDig;
         num = parseInt(num / 10);
     }
-    if (rev == numbkp)
-        return true;
-    else
-        return false;
+    // if (rev == numbkp)
+    //     return true;
+    // else
+    //     return false;
+    return rev == numbkp;
 }
 console.log(isPalindrome(11));
 
@@ -86,18 +95,18 @@ console.log(fibonacci(10));
 */
 
 //10. Divisible by 6 or not 
-function divby6(num) {
-    if (num % 6 == 0)
-        return true;
-    else
-        return false;
+function divbySix(num) {
+    // if (num % 6 == 0)
+    //     return true;
+    // else
+    //     return false;
+    return num % 6 == 0;
 }
-console.log(divby6(36))
+console.log(divbySix(36))
 
 //11. Convert Sec to houra
 function secToHh(sec) {
-    let hour = sec / 3600;
-    return hour;
+    return sec / 3600;;
 }
 console.log(secToHh(12000));
 
@@ -266,10 +275,7 @@ console.log(changeCharcase('i love felight'));
 // 28 isDigit
 function isDigit(num) {
     let n1 = 0;
-    if (typeof n1 === typeof num)
-        return true;
-    else
-        return false;
+    return (typeof n1 === typeof num);
 }
 console.log(isDigit(9))
 
@@ -293,12 +299,159 @@ console.log(middleChar('WIN'));
 
 //30. same Last Digit
 function sameLastDigit(num1, num2) {
-    return ((num1 % 10) == (num2 % 10) ? true : false);
+    return (num1 % 10) == (num2 % 10);
 }
 console.log(sameLastDigit(102, 121));
 
 //31 Add for third
 function addForThird(num1, num2, num3) {
-    return (((num1 + num2 == num3) || (num2 + num3 == num1) || (num3 + num1 == num2)) ? true : false);
+    return (num1 + num2 == num3) || (num2 + num3 == num1) || (num3 + num1 == num2);
 }
 console.log(addForThird(2, 2, 4));
+
+//32. lotteryPrize
+function lotteryPrize(num) {
+    if (num % 4 == 0 && num % 7 == 0)
+        return 20;
+    else if (num % 4 == 0)
+        return 6;
+    else if (num % 7 == 0)
+        return 10;
+    else
+        return 0;
+}
+console.log(lotteryPrize(28));
+
+//33 Lottery Prize 3
+function lotteryPrizeThree(num1, num2, num3) {
+    return totalReward = lotteryPrize(num1) + lotteryPrize(num2) + lotteryPrize(num3);
+}
+console.log(lotteryPrizeThree(4, 7, 28));
+
+//34. sumLastThree
+function sumLastThree(num) {
+    let n1 = 0;
+    let n2 = 0;
+    let n3 = 0;
+    for (var i = 0; i < 3; i++) {
+        n1 = parseInt(num / 10);
+        n2 = num % 10;
+        n3 = n3 + n2;
+        num = n1;
+    }
+    return n3;
+}
+console.log(sumLastThree(123456789));
+
+//35 BlackJack
+function blackJack(num1, num2) {
+    // return ((num1 > num2 && num1 <= 21 && num2 > 21) ? num1 : num2 <= 21 ? num2 : (num1 = num2 && num1 <= 21) ? -2 : -1);
+    if ((num1 > num2 && num1 <= 21) || (num1 < num2 && num2 > 21 && num1 < 21))
+        return num1;
+    if ((num1 > num1 && num2 <= 21) || (num2 < num1 && num1 > 21 && num2 < 21))
+        return num2;
+    if (num1 == num2 && num1 <= 21)
+        return -2;
+    if (num1 > 21 && num2 > 21)
+        return -1;
+}
+console.log(blackJack(20, 20));
+
+//36. Reverse3
+function reverseThree(num) {
+    let rev = 0;
+    while (num != 0) {
+        rev = (rev * 10) + (num % 10);
+        num = parseInt(num / 10)
+    }
+    return rev;
+}
+console.log(reverseThree(123456));
+
+//37 perfectNumber
+function perfectNumber(num) {
+    let comp = 0;
+    for (var i = 1; i <= parseInt(num / 2); i++) {
+        if (num % i == 0)
+            comp = comp + i;
+    }
+    return comp === num;
+}
+console.log(perfectNumber(6));
+
+//37.1 to print perfect numbers till 10000
+function perfectNumbers(untill) {
+    let x = '';
+    for (var c = 1; c <= untill; c++) {
+        if (perfectNumber(c) == true)
+            x = x + ' ' + c;
+    }
+    return x;
+}
+console.log(perfectNumbers(10000));
+
+//38 naturalNumbers
+function naturalNumbers(num) {
+    let st = '';
+    while (num != 0) {
+        st = st + ' ' + (num % 10);
+        num = parseInt(num / 10);
+    }
+    return st;
+}
+console.log(naturalNumbers(1352));
+
+//39 randomlNumbers
+function randomlNumbers(num) {
+    let st = '';
+    for (i = 0; i <= num; i++) {
+        st = st + ' ' + 258;
+    }
+    return st;
+}
+console.log(randomlNumbers(5));
+
+// 40 Generate Even Numbers
+function genEven(from, to) {
+    let num = '';
+    for (var i = from; i <= to; i++) {
+        if (even(i) == true)
+            num = num + ' ' + i;
+    }
+    return num;
+}
+console.log(genEven(1, 20));
+
+
+// 41 Generate Odd Numbers
+function genOdd(from, to) {
+    let num = '';
+    for (var i = from; i <= to; i++) {
+        if (odd(i) == true)
+            num = num + ' ' + i;
+    }
+    return num;
+}
+console.log(genOdd(1, 20));
+
+
+//42 Generate Prime Numbers
+function genPrime(from, to) {
+    let num = '';
+    for (var i = from; i <= to; i++) {
+        if (isPrime(i) == true)
+            num = num + ' ' + i;
+    }
+    return num;
+}
+console.log(genPrime(1, 100));
+
+// function genPrime(from, to) {
+//     let num;
+//     for (var i = from; i <= to; i++) {
+//         if (isPrime(i) == true)
+//             num = num + '\n' + i;
+//     }
+//     return num;
+// }
+// console.log(genPrime(1, 100));
